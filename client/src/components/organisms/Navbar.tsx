@@ -1,8 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "../atoms/Button";
+import { FC, ReactNode } from "react";
 
-export const Navbar = () => {
+interface NavbarItem {}
+
+interface NavbarProps {
+  items?: NavbarItem[];
+}
+export const Navbar: FC<NavbarProps> = ({ items }) => {
   return (
     <nav className="bg-white shadow-lg relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -67,9 +73,9 @@ export const Navbar = () => {
                 aria-hidden="true"
               >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   d="M4 6h16M4 12h16M4 18h16"
                 />
               </svg>
