@@ -2,13 +2,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "../atoms/Button";
 import { FC, ReactNode } from "react";
+import { FaShoppingCart } from "react-icons/fa";
 
 interface NavbarItem {}
 
 interface NavbarProps {
   items?: NavbarItem[];
+  cartCount?: number;
 }
-export const Navbar: FC<NavbarProps> = ({ items }) => {
+export const Navbar: FC<NavbarProps> = ({ items, cartCount = 0 }) => {
   return (
     <nav className="bg-white shadow-lg relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -28,24 +30,29 @@ export const Navbar: FC<NavbarProps> = ({ items }) => {
             </Link>
             <ul className="hidden md:ml-6 md:flex md:items-center">
               <li>
-                <a
-                  href="#"
+                <Link
+                  href="/products"
                   className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Products
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  Products
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
           <div className="hidden md:flex md:items-center md:space-x-3">
+            <div className="relative mr-6">
+              <Link
+                href="/cart"
+                className="text-blue-400 relative focus:outline-none"
+              >
+                <FaShoppingCart size={24} />
+              </Link>
+              {cartCount > 0 && (
+                <span className="absolute -right-3 -top-3 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white bg-red-500 rounded-full">
+                  {cartCount}
+                </span>
+              )}
+            </div>
             <Link
               href="/sign-in"
               className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"

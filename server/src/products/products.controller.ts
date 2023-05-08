@@ -13,6 +13,11 @@ export class ProductsController {
     return this.productsService.create(createProductDto);
   }
 
+  @Get('total')
+  getTotal() {
+    return this.productsService.getTotal();
+  }
+
   @Get()
   findAll(@Query('limit') limit: number, @Query('offset') offset, @Query('orderBy') orderBy: string) {
     return this.productsService.findAll(limit, offset, orderBy);

@@ -3,6 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { FC } from "react";
 import { Button } from "../atoms/Button";
+import { currencyFormatter } from "@client/utils/currencyFormatter";
+import { FaShoppingBag } from "react-icons/fa";
 
 interface CardProps {
   product: IProduct;
@@ -35,8 +37,12 @@ export const Card: FC<CardProps> = ({ product }) => {
           {description}
         </p>
         <div className="flex items-center justify-between">
-          <div className="text-gray-900 font-bold text-xl">{price}</div>
-          <Button>Сагслах</Button>
+          <div className="text-gray-900 font-bold text-xl">
+            {currencyFormatter(product.price)} ₮
+          </div>
+          <Button>
+            <FaShoppingBag />
+          </Button>
         </div>
       </div>
     </div>
