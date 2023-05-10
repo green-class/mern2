@@ -8,12 +8,15 @@ import { Layout } from "../layout";
 import { FaMinus, FaPlus, FaRegStar, FaStar } from "react-icons/fa";
 import { toast } from "react-toastify";
 import { currencyFormatter } from "@client/utils/currencyFormatter";
+import { useBasket } from "@client/hooks/useBasket";
 
 interface ProductViewProps {
   product: IProduct;
 }
 const ProductView: FC<ProductViewProps> = (props) => {
   const [quantity, setQuantity] = useState(1);
+
+  const { addToBasket } = useBasket();
   const { product } = props;
 
   const updateProductCount = (count: number) => {
@@ -27,6 +30,7 @@ const ProductView: FC<ProductViewProps> = (props) => {
     }
     setQuantity(quantity + count);
   };
+
   return (
     <>
       <Layout title={product.name}>
@@ -114,7 +118,9 @@ const ProductView: FC<ProductViewProps> = (props) => {
                   </button>
                 </div>
               </div>
-              <Button>Add to Cart</Button>
+              <Button onClick={() => addToBasket(product._id, quantity)}>
+                Add to Cart
+              </Button>
             </div>
           </div>
         </div>

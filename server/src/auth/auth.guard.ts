@@ -23,15 +23,15 @@ export class AuthGuard implements CanActivate {
     } catch (e) {
       throw new UnauthorizedException();
     }
-    const roles = this.reflector.get<string[]>('roles', context.getHandler());
+    // const roles = this.reflector.get<string[]>('roles', context.getHandler());
 
     const user = payload.sub;
 
-    for (const role of roles) {
-      if (!user.roles.includes(role)) {
-        throw new ForbiddenException();
-      }
-    }
+    // for (const role of roles) {
+    //   if (!user.roles.includes(role)) {
+    //     throw new ForbiddenException();
+    //   }
+    // }
 
     request['user'] = user;
 

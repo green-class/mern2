@@ -7,9 +7,10 @@ import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { FilesModule } from './files/files.module';
 import { ProductsModule } from './products/products.module';
+import { BasketsModule } from './baskets/baskets.module';
 
 @Module({
-  imports: [MongooseModule.forRoot(env.MONGO_URL), AuthModule, UsersModule, FilesModule, ProductsModule],
+  imports: [MongooseModule.forRoot(env.MONGO_URL), AuthModule, UsersModule, FilesModule, ProductsModule, BasketsModule],
   controllers: [AppController],
   providers: [AppService],
 })

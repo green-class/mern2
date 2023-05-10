@@ -3,7 +3,6 @@ import axios from "axios";
 import { GetServerSidePropsContext } from "next";
 import { Layout } from "../layout";
 import { FC } from "react";
-import { Button } from "@client/components/atoms/Button";
 import { Card } from "@client/components/molecules/Card";
 import { nanoid } from "nanoid";
 import { Pagination } from "@client/components/molecules/Pagination";

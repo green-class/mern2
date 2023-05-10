@@ -9,8 +9,13 @@ interface NavbarItem {}
 interface NavbarProps {
   items?: NavbarItem[];
   cartCount?: number;
+  currentUser?: any;
 }
-export const Navbar: FC<NavbarProps> = ({ items, cartCount = 0 }) => {
+export const Navbar: FC<NavbarProps> = ({
+  items,
+  currentUser,
+  cartCount = 0,
+}) => {
   return (
     <nav className="bg-white shadow-lg relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -53,15 +58,20 @@ export const Navbar: FC<NavbarProps> = ({ items, cartCount = 0 }) => {
                 </span>
               )}
             </div>
-            <Link
-              href="/sign-in"
-              className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
-            >
-              Login
-            </Link>
-            <Button as={Link} href="/sign-up">
-              Sign up
-            </Button>
+            {!currentUser && (
+              <>
+                <Link
+                  href="/sign-in"
+                  className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
+                >
+                  Login
+                </Link>
+                <Button as={Link} href="/sign-up">
+                  Sign up
+                </Button>
+              </>
+            )}
+            {currentUser && currentUser.email}
           </div>
           <div className="-mr-2 flex md:hidden">
             <button
