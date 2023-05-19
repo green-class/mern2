@@ -17,7 +17,7 @@ export class Basket {
 
   user: User;
 
-  @Prop({ type: Object })
+  @Prop({ type: [{ productId: { type: String, ref: 'Product' }, quantity: Number }] })
   items: BasketItem[];
 
   @Prop({ default: true })

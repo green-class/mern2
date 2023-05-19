@@ -15,7 +15,7 @@ export const sendEmail = (to: string, subject: string, message: string) =>
       from: env.EMAIL_ADDRESS,
       to: to,
       subject: subject,
-      text: message,
+      html: message,
     };
     transporter.sendMail(mailOptions, function (error, info) {
       if (error) {
