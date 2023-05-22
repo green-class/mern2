@@ -130,9 +130,17 @@ const ProductView: FC<ProductViewProps> = (props) => {
 };
 
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
-  const { _id } = ctx.params;
+  const params = ctx.params;
+  if (!params) {
+    return {
+      props: {
+        product: null,
+      },
+    };
+  }
+  const { _id } = params;
   const productsRequest = await axios.get(
-    `http://localhost:3005/products/${_id}`
+    `${process.env.NEXT_PUBLIC_API_URL}/products/${_id}`
   );
   const product: IProduct = productsRequest.data;
   return {

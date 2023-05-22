@@ -9,13 +9,16 @@ const LoginPage = () => {
   const loginOnSubmit = async (e: any) => {
     e.preventDefault();
     axios
-      .post("http://localhost:3005/otp/signin", {
+      .post(`${process.env.NEXT_PUBLIC_API_URL}/otp/signin`, {
         email,
       })
       .then((res) => {
         const otp = window.prompt("Your OTP?");
         axios
-          .post("http://localhost:3005/otp/signin/verify", { email, otp })
+          .post(`${process.env.NEXT_PUBLIC_API_URL}/otp/signin/verify`, {
+            email,
+            otp,
+          })
           .then((res) => {
             localStorage.setItem("token", res.data);
             toast.success("Амжилттай нэвтэрлээ!");

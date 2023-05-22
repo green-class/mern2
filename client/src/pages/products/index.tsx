@@ -51,11 +51,11 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   const { page = 1, size = 12 } = ctx.query;
 
   const productsRequest = await axios.get(
-    `http://localhost:3005/products?limit=${size}`
+    `${process.env.NEXT_PUBLIC_API_URL}/products?limit=${size}`
   );
 
   const productsCountRequest = await axios.get(
-    `http://localhost:3005/products/total`
+    `${process.env.NEXT_PUBLIC_API_URL}/products/total`
   );
 
   const products: IProduct[] = productsRequest.data;

@@ -24,7 +24,7 @@ export const Layout: FC<LayoutProps> = ({
   useEffect(() => {
     if (!currentUser) {
       axios
-        .get("http://localhost:3005/currentUser", {
+        .get(`${process.env.NEXT_PUBLIC_API_URL}/currentUser`, {
           headers: { Authorization: "Bearer " + localStorage.getItem("token") },
         })
         .then((res) => {
@@ -39,7 +39,7 @@ export const Layout: FC<LayoutProps> = ({
   useEffect(() => {
     if (currentUser) {
       axios
-        .get("http://localhost:3005/baskets/main", {
+        .get(`${process.env.NEXT_PUBLIC_API_URL}/baskets/main`, {
           headers: { Authorization: "Bearer " + localStorage.getItem("token") },
         })
         .then((res) => {

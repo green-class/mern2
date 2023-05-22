@@ -46,7 +46,7 @@ export default function Home({ products }: HomeProps) {
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   const limit = 8;
   const productsRequest = await axios.get(
-    `http://localhost:3005/products?limit=${limit}`
+    `${process.env.NEXT_PUBLIC_API_URL}/products?limit=${limit}`
   );
   const products: IProduct[] = productsRequest.data;
   return {

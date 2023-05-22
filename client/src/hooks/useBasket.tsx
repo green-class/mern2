@@ -59,7 +59,7 @@ export const useBasket = () => {
       return newBasket;
     }
     const response = await axios.post(
-      "http://localhost:3005/baskets/add",
+      `${process.env.NEXT_PUBLIC_API_URL}/baskets/add`,
       {
         productId,
         quantity,
