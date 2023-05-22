@@ -1,5 +1,4 @@
 import { Card } from "@client/components/molecules/Card";
-import { Layout } from "./layout";
 import { GetServerSidePropsContext } from "next";
 import axios from "axios";
 import { IProduct } from "@client/interfaces/product";
@@ -7,6 +6,7 @@ import { nanoid } from "nanoid";
 import Head from "next/head";
 import { Button } from "@client/components/atoms/Button";
 import Link from "next/link";
+import { Layout } from "@client/layouts/layout";
 
 interface HomeProps {
   products: IProduct[];

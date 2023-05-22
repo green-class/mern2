@@ -4,11 +4,11 @@ import axios from "axios";
 import { GetServerSidePropsContext } from "next";
 import Image from "next/image";
 import { FC, useState } from "react";
-import { Layout } from "../layout";
 import { FaMinus, FaPlus, FaRegStar, FaStar } from "react-icons/fa";
 import { toast } from "react-toastify";
 import { currencyFormatter } from "@client/utils/currencyFormatter";
 import { useBasket } from "@client/hooks/useBasket";
+import { Layout } from "@client/layouts/layout";
 
 interface ProductViewProps {
   product: IProduct;
